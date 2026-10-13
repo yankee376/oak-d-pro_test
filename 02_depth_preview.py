@@ -45,9 +45,7 @@ stereo.setSubpixel(True)
 
 disparity_queue = stereo.disparity.createOutputQueue()
 
-# Colormap: black = no depth data, blue = far, red = close
-color_map = cv2.applyColorMap(np.arange(256, dtype=np.uint8), cv2.COLORMAP_JET)
-color_map[0] = [0, 0, 0]  # keep invalid pixels black
+# Invalid pixels (disparity 0) are shown as black after applying the colormap.
 
 # --- Run --------------------------------------------------------------
 with pipeline:
@@ -66,7 +64,8 @@ with pipeline:
 
         # Normalize to 0-255 then apply colormap
         normalized = ((disp / max_disparity) * 255).astype(np.uint8)
-        colored    = cv2.applyColorMap(normalized, color_map)
+        colored = cv2.applyColorMap(normalized, cv2.COLORMAP_JET)
+        colored[disp == 0] = (0, 0, 0)
 
         cv2.imshow("OAK-D Depth", colored)
         if cv2.waitKey(1) == ord("q"):

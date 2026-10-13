@@ -17,8 +17,12 @@ env/
 .vscode/
 *.iml
 
-# Model blobs (download at runtime via blobconverter)
+# Model blobs
 *.blob
+
+# DepthAI model downloads and crash dumps
+.depthai_cached_models/
+.cache/
 
 # Logs and temp
 *.log

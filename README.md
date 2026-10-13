@@ -38,7 +38,7 @@ python main.py
 | `02_depth_preview.py` | Stereo vision fundamentals, disparity maps, colorized depth |
 | `03_imu_data.py` | Reading IMU sensor data (accelerometer + gyroscope) |
 | `04_rgb_depth_combined.py` | Multi-stream pipelines, frame synchronization, side-by-side display |
-| `05_object_detection.py` | On-device neural network inference (MobileNet SSD, 20 classes) |
+| `05_object_detection.py` | On-device object detection (YOLOv6 Nano, COCO classes) |
 
 ## Key Concepts
 
